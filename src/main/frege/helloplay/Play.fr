@@ -1,0 +1,22 @@
+module helloplay.Play where
+
+data PlayController = native play.mvc.Controller
+
+data Result = pure native play.mvc.Result
+
+data ResultStatus = pure native play.mvc.Results.Status
+
+pure native badRequest play.mvc.Results.badRequest :: String -> ResultStatus
+
+data Request = pure native play.mvc.Http.Request where
+  pure native body :: Request -> RequestBody
+
+data RequestBody = pure native play.mvc.Http.RequestBody where
+  pure native asText :: RequestBody -> String
+  pure native asJson :: RequestBody -> JsonNode
+
+data JsonNode = pure native com.fasterxml.jackson.databind.JsonNode where
+  pure native asText :: JsonNode -> String
+  pure native toString :: JsonNode -> String
+
+pure native ok play.mvc.Results.ok :: String -> ResultStatus
